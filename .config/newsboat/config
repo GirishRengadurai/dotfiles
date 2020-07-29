@@ -1,24 +1,44 @@
 auto-reload yes
+cache-file "~/.config/newsboat/cache.db"
 cookie-cache "~/.config/newsboat/cookies.txt"
 confirm-exit no
 display-article-progress yes
 download-full-page yes
 download-retries 4
 download-timeout 15
-feed-sort-order unreadarticlecount
+error-log "~/.config/newsboat/error.log"
+feed-sort-order unreadarticlecount -desc
+history-limit 0
+keep-articles-days 0
+max-download-speed 0
+max-items 0
+podcast-auto-enqueue yes
 reload-time 10
 reload-threads 4
 refresh-on-startup yes
+save-path "~/.config/newsboat/saved"
+show-keymap-hint yes
 ssl-verifyhost yes
 ssl-verifypeer yes
-
-
+urls-source "local"
+user-agent "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36"
 
 bind-key j down
 bind-key k up
 bind-key j next articlelist
 bind-key k prev articlelist
 bind-key E edit-urls
+bind-key U show-urls
+
+browser linkhandlermacro 
+macro , open-in-browser
+macro t set browser "qndl" ; open-in-browser ; set browser linkhandler
+macro a set browser "tsp youtube-dl --add-metadata -xic -f bestaudio/best" ; open-in-browser ; set browser linkhandler
+macro v set browser "setsid -f mpv" ; open-in-browser ; set browser linkhandler
+macro w set browser "lynx" ; open-in-browser ; set browser linkhandler
+macro p set browser "dmenuhandler" ; open-in-browser ; set browser linkhandler
+macro c set browser "xsel -b <<<" ; open-in-browser ; set browser linkhandler
+macro C set browser "youtube-viewer --comments=%u" ; open-in-browser ; set browser linkhandler
 
 color listnormal cyan default
 color listfocus black yellow standout bold
